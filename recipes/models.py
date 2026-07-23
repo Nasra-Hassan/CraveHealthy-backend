@@ -30,16 +30,32 @@ class Recipe(models.Model):
     prep_time = models.PositiveIntegerField(
         help_text="Preparation time in minutes"
     )
+
     cook_time = models.PositiveIntegerField(
         help_text="Cooking time in minutes"
     )
 
     servings = models.PositiveIntegerField(default=1)
 
-    calories = models.PositiveIntegerField()
-    protein = models.FloatField()
-    carbohydrates = models.FloatField()
-    fat = models.FloatField()
+    calories = models.PositiveIntegerField(
+        null=True,
+        blank=True
+    )
+
+    protein = models.FloatField(
+        null=True,
+        blank=True
+    )
+
+    carbohydrates = models.FloatField(
+        null=True,
+        blank=True
+    )
+
+    fat = models.FloatField(
+        null=True,
+        blank=True
+    )
 
     image_url = models.URLField(blank=True)
 
