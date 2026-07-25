@@ -13,9 +13,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import os
 
-
 from dotenv import load_dotenv
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,7 +30,11 @@ SECRET_KEY = 'django-insecure-cwapb%n+vdl58uu59jz_^rfqwukjs3vgx8lv#+yxafbnzc&$09
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "cravehealthy-backend",
+]
 
 
 # Application definition
@@ -44,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
 
     "corsheaders",
     "rest_framework",
@@ -148,7 +149,11 @@ REST_FRAMEWORK = {
     ),
 }
 
+# FIX: frontend runs on port 3000 (Docker/nginx), not 5173.
+# Keeping 5173 too in case you run `npm run dev` locally outside Docker.
 CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]

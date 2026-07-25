@@ -11,7 +11,9 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    
+    networks:
+      - cravehealthy-network
+
   web:
     build: .
     container_name: cravehealthy-backend
@@ -25,6 +27,12 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    networks:
+      - cravehealthy-network
 
 volumes:
   postgres_data:
+
+networks:
+  cravehealthy-network:
+    external: true
