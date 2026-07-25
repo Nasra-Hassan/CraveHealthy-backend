@@ -155,10 +155,10 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
+    "https://cravehealthy-frontend.onrender.com",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://cravehealthy-backend.onrender.com",
+    "https://cravehealthy-frontend.onrender.com",
 ]
